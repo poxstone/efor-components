@@ -1,0 +1,318 @@
+//mods and complements
+
+/*MODS*/
+// fixed vertical position icons in line txt
+.mdl-menu
+.mdl-navigation__link
+    .material-icons
+        vertical-align middle
+
+.mdl-button
+    text-transform none
+    
+.material-icons
+    vertical-align middle
+
+//validations angular
+input.ng-valid.ng-touched{}
+
+input.ng-invalid.ng-touched
+    & + .mdl-textfield__label:after
+        width 100%
+        background-color #f44336
+        visibility visible
+        left 0
+        
+.mdl-button
+    text-transform none
+.mini-input.mdl-textfield
+    padding-bottom 10px
+    .mdl-textfield__label:after
+        bottom 10px
+
+.mini-input.mdl-textfield
+    padding-bottom 10px
+    .mdl-textfield__label:after
+        bottom 10px
+
+.mdl-textfield.always-view
+    &.mdl-textfield--floating-label .mdl-textfield__label
+        font-size 12px
+        top 4px
+        visibility visible
+
+input.mdl-textfield__input[type="file"]
+    font-size 12px
+
+/*COMPLEMENTS*/
+//fonts
+.font-w-bold
+    font-weight bold
+.font-w-normal
+    font-weight normal
+.font-w-light
+    font-weight light
+
+.text-a-left
+	&
+	td&
+	th&
+    	text-align left
+.text-a-center
+	&
+	td&
+	th&
+    	text-align center
+.text-a-right
+	&
+	td&
+	th&
+    	text-align right
+.text-a-justify
+	&
+	td&
+	th&
+    	text-align justify
+    	
+.text-muted
+	color $gray
+.text-primary
+	color $primary
+.text-success
+	color $success
+.text-info
+	color $info
+.text-warning
+	color $warning
+.text-danger
+	color $danger
+
+.table-overflow
+    display block
+    overflow hidden
+    overflow-x auto
+    padding-bottom 50px
+	
+// TABLES
+tr, th, td
+	&[ng-click]
+		cursor pointer
+
+.table-list
+    width 100%
+    border-left none
+    border-right none
+    border-top none
+    
+    thead
+        tr
+            background transparent 
+        th
+            transition ease-in-out 250ms all
+            padding 0 0 0 $paddingBox
+            height auto
+            font-size $text_ps
+            font-weight normal
+            cursor default
+
+                &:before
+                    beforeAfter inline-block relative 3px 3px
+                    arrow 6px 6px down $grey-700
+                    margin-right 3px
+                    vertical-align middle
+                    top -1px
+                    opacity 0
+                    transform rotate(0)
+                    transition ease-in-out 250ms all
+                    
+                &:hover
+                    background $grey-200
+            
+                    &:before
+                        opacity 0.5
+                
+            &.order
+                font-weight bold
+                color $grey-700
+                
+                &:before
+                    opacity 1
+                    
+            &.reverse
+                &:before
+                    transform rotate(180deg)
+                    
+            &.active
+                font-weight bold
+                
+    tbody
+        tr
+            height auto
+                
+            td
+                height auto
+                padding 4px 0 4px $paddingBox
+                border-top 1px solid $grey-200
+                border-bottom 1px solid $grey-200
+                
+                .mdl-switch
+                    display inline
+                    
+                &:last-child
+                    text-align right
+    
+    /.text-overflow
+        display block
+        max-width 320px
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        
+        &.owner
+            max-width 150px
+    
+    .mdl-button--icon
+        size 24px
+        min-width 24px
+        color $grey-600
+        
+.tbody-description
+    > tr
+        height auto !important
+        
+        > th, > td
+            border none
+            padding-top 6px !important
+            padding-bottom 6px !important
+            min-height 0
+            height auto
+                
+    /.tr-description
+        display none
+        
+        > td, > th
+            white-space pre-line
+            text-align left
+            padding-top 0
+            padding-bottom 0
+            font-size $text_ps
+            
+            &::first-line
+            &::first-letter
+                font-size $text_p
+                font-style italic
+            
+        &:hover
+            background transparent !important
+            
+    &.description-open
+        background rgba(80,80,80,0.05)
+        
+        tr
+            > th, > td
+                font-weight bold
+            
+        .tr-description
+            display table-row
+        
+            > td, > th
+                font-weight normal
+                padding-bottom 12px
+                border-bottom 1px #ccc solid
+
+// BUTTONS MDL COLORS
+
+// Default
+mdlButton-default($bg=#ccc, $col=#333, $col2=#333 , args...)
+    .mdl-button--raised
+    .mdl-button--fab
+        /.mdl-button
+            color $col2 args
+            
+            &:hover
+                background lighten($bg,20%) args
+                color $col args
+        &
+            color $col args
+            background $bg args
+            &:hover
+                background lighten($bg,20%) args
+//mdlButton-default #000 #fff #000
+                
+// Primary
+mdlButton-primary($bg=blue, $col=#fff, $col2=blue , args...)
+    .mdl-button--fab.mdl-button--colored
+    .mdl-button--accent.mdl-button--accent.mdl-button--raised
+    .mdl-button--accent.mdl-button--accent.mdl-button--fab
+        /.mdl-button--accent.mdl-button--accent
+            color $col2 args
+            &:hover
+                color $col args
+        &
+            background $bg args
+            color $col args
+            &:hover
+                background lighten($bg,20%) args
+//mdlButton-primary #000 #fff #000
+                
+// Secundary
+mdlButton-secondary($bg=purple, $col=#fff, $col2=purple , args...)
+    .mdl-button--raised.mdl-button--colored
+        /.mdl-button--primary.mdl-button--primary
+        /.mdl-button.mdl-button--colored
+            color $col2 args
+            &:hover
+                background lighten($bg,20%) args
+                color $col
+        &
+            background $bg args
+            color $col args
+            &:hover
+                background lighten($bg,20%) args
+//mdlButton-secondary #000 #fff #000
+    
+// Disable
+mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
+    .mdl-button--fab[disabled][disabled]
+    .mdl-button--fab.mdl-button--disabled.mdl-button--disabled
+    .mdl-button--raised[disabled][disabled]
+    .mdl-button--raised.mdl-button--disabled.mdl-button--disabled
+        /.mdl-button[disabled][disabled]
+        /.mdl-button.mdl-button--disabled.mdl-button--disabled
+            color $col2 args
+        &
+            background $bg args
+            color $col args
+//mdlButton-disabled #000 #fff #000
+
+//load widget
+*[loading-widget]
+    background rgba(255,255,255,0.75);
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    width 100%
+    height 100%
+    box-sizing border-box
+    z-index 1000
+    text-align denter
+    transition ease-in-out 1s all
+    opacity 1
+    
+    &[style*="display: none"]
+        display block !important
+        opacity 0
+        z-index -1
+    
+    .message
+        position relative
+        display block
+        margin 10px auto
+        max-width 250px
+        text-align center
+        border-radius 2px
+        padding 2px 8px
+        box-shadow rgba(0,0,0,0.25) 2px 2px 6px 0
+        background $yellow

@@ -1,0 +1,65 @@
+$noti_rad = $noti_rad is defined ? $noti_rad :  2px
+$noti_background = $noti_background is defined ? $noti_background :  rgba(38,50,56,0.85)
+$noti_background_hover = $noti_background_hover is defined ? $noti_background_hover :  rgba(38,50,56,1)
+$noti_text_size = $noti_text_size is defined ? $noti_text_size :  14px
+$noti_info = $noti_info is defined ? $noti_info :  #50D2EC
+$noti_warning = $noti_warning is defined ? $noti_warning :  #ff9800
+$noti_danger = $noti_danger is defined ? $noti_danger :  #e53935
+$noti_success = $noti_success is defined ? $noti_success :  #8bc34a
+
+.ui-notification
+    border-radius $noti_rad
+    position fixed
+    z-index 9999
+    box-shadow 5px 5px 10px rgba(0, 0, 0, 0.3)
+    cursor pointer
+    width 300px
+    color #fff
+    background $noti_background
+    transition all ease 0.5s
+    
+    &.killed
+        opacity 0
+        transition opacity ease 1s
+
+    & > h3
+        display block
+        margin 10px 10px 0 10px
+        padding 0 0 5px 0
+        text-align left
+        font-size 20px
+        font-weight bold
+        border-bottom 1px solid gray
+        line-height 1.2em
+        color #f1f1f1
+        font-weight normal
+
+    a
+        text-decoration underline
+        font-weight normal
+        COLOR #fff
+        &:hover
+            text-decoration underline
+
+    > .message
+        margin 10px 10px 10px 10px
+
+    &.warning
+        &
+            color $noti_warning
+
+    &.error
+        &
+            color $noti_danger
+
+    &.success
+        &
+            color $noti_success
+
+    &.info
+        &
+            color $noti_info
+
+    &:hover
+        background $noti_background_hover
+        opacity 1

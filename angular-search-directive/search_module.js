@@ -16,14 +16,15 @@
                 var inpEnterFun = attrs.inpEnterFun ? execute_Fun(attrs.inpEnterFun) : null;
                 var attrEnterFun = attrs.inpEnterFun ? 'ng-click="' + attrs.inpEnterFun + ';"' : '';
                 var attrClearFun = attrs.inpClearFun ? 'ng-click="' + attrs.inpClearFun + '; ' + attrs.inpQueryModel + '=\'\'"' : '';
-                var listModel = attrs.listModel || null;
+                var listRepeat = attrs.listRepeat || null;
                 var listSelectFun = attrs.listSelectFun ? scope[attrs.listSelectFun] : null;
                 var listMdlIcon = attrs.listMdlIcon ? '<i class="material-icons">' + attrs.listMdlIcon + '</i>' : '';
                 // attrMultipleFun is used for validate if is multiselected
                 var attrMultipleFun = attrs.listMultipleFun ?  'ng-click="' + attrs.listMultipleFun + '"' : '';
                 // Object to array repeat {} or []
-                var repetInObject = splitIn(listModel, 'object');
-                var repetItem = splitIn(listModel, 'item');
+                var repetItem = splitIn(listRepeat, 'item');
+                var repetInObject = splitIn(listRepeat, 'object');
+                var repetFilter = splitIn(listRepeat, 'filter');
 
                 // Elements create
                 var elemInpQuery = $('<input class="input_query" type="text"autocomplete="off" ' + attrPlaceholder + ' '
@@ -36,8 +37,9 @@
                 // Div list result
                 var elemContGenList = $('<div class="cont-gen-list" ng-show="' + repetInObject + '.length">');
                 var elemInpResultCont = $('<div class="desplegable-list">');
-                var elemInpResultList = $('<label class="li" ng-repeat="item in ' + repetInObject + '" ng-click="' + attrs.listSelectFun + '" >\
-                                            ' + listMdlIcon + '<i class="material-icons" ng-if="item.icon">{[{item.icon}]}</i>\
+                var elemInpResultList = $('<label class="li" ng-repeat="item in ' + repetInObject + repetFilter
+                                            + '" ng-click="' + attrs.listSelectFun + '" >'
+                                            + listMdlIcon + '<i class="material-icons" ng-if="item.icon">{[{item.icon}]}</i>\
                                             {[{' + repetItem + '}]}</label>');
                 var elementResultEmpty = $('<span class="search-notmatchuser" ng-show="!' + repetInObject + '">No hay coincidencias</span>');
                 var elemContBtnsInf = $('<div class="cont-btns-inf" ng-show="' + repetInObject + '.length" >');
@@ -53,7 +55,7 @@
                 elemContIcos.append(elemInpClear);
 
                 // Add list items and down icon to main element
-                if (listModel) {
+                if (listRepeat) {
                     elemInpResultCont.append(elemInpResultList);
                     elemInpResultCont.append(elementResultEmpty);
                     elemContGenList.append(elemInpResultCont);
@@ -199,7 +201,7 @@
                             case 38: // Up
                                 if (element.is('.show-list')) {
                                     event.preventDefault();
-                                    moveSelectDown(elemInpResultCont, 'up');
+                                    moveSelectKey(elemInpResultCont, 'up');
                                 }
                                 break;
 
@@ -210,7 +212,7 @@
                                 element.removeClass('hide-list').addClass('show-list');
                                 if (element.is('.show-list')) {
                                     event.preventDefault();
-                                    moveSelectDown(elemInpResultCont, 'down');
+                                    moveSelectKey(elemInpResultCont, 'down');
 
                                 }
                                 break;
@@ -301,11 +303,15 @@
                     var isObject = !!new_string.match(' in ');
 
                     // Split if is object fot array and item
-                    if (type=='object') {
-                        objectName = isObject ? new_string.split(' in ')[1] : new_string;
 
-                    } else {
+                    if (type=='item') {
                         objectName = isObject ? 'item.' + new_string.split(' in ')[0] : 'item';
+
+                    } else if (type=='object') {
+                        objectName = isObject ? new_string.split(' in ')[1].replace(/ \|.+$/, '') : new_string;
+
+                    } else if (type=='filter') {
+                        objectName = isObject && new_string.match(/\|/) ? new_string.split(' in ')[1].replace(/^.+\|/, ' |') : '';
 
                     }
 
@@ -314,7 +320,7 @@
                 }
 
                 // To move list result
-                function moveSelectDown(contResult, move) {
+                function moveSelectKey(contResult, move) {
                     var listElements = contResult.children('.li');
                     var listLenght = listElements.length;
                     var elementActive = listElements.filter('.hover');

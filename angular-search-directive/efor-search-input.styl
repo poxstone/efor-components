@@ -133,7 +133,8 @@ $text_p = $text_p is defined ? $text_p : 14px
         .li
             display block
             padding 0
-            margin 0 0 1px
+            margin 0
+            border-bottom 1px solid #fff
             padding 4px 4px
             cursor pointer
             color $blue-grey-700
@@ -197,7 +198,4 @@ $text_p = $text_p is defined ? $text_p : 14px
         .ico-show
             transform rotate(-180deg);
 
-    &.to-hide
-        outerline 2px solid orange
-        &, *
-            color orange !important
+    &.to-hide {}

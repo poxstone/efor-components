@@ -43,7 +43,8 @@
                                             {[{' + repetItem + '}]}</label>');
                 var elementResultEmpty = $('<span class="search-notmatchuser" ng-show="!' + repetInObject + '">No hay coincidencias</span>');
                 var elemContBtnsInf = $('<div class="cont-btns-inf" ng-show="' + repetInObject + '.length" >');
-                var elementBtnResult = $('<button class="btn-multiple-action" ' + attrMultipleFun + '>Seleccionar</button>');
+                var elementBtnResult = $('<button class="mdl-button mdl-button--primary mdl-button--raised btn-multiple-action" '
+                                        + attrMultipleFun + '>Seleccionar</button>');
 
                 // Prepare conteiner
                 element.addClass('hide-list');
@@ -95,7 +96,6 @@
                                 element.removeClass('show-list').addClass('hide-list');
                                 // Remove state hover/selected item
                                 elemInpResultCont.children('.hover').removeClass('hover');
-
 
                             }
                             // naywhere un mark
@@ -370,7 +370,6 @@
                     } else if (move == 'up') {
                         // When is first element retirn to input focus
                         listElements.removeClass('hover');
-
 
                     }
 

@@ -43,7 +43,7 @@
                                             {[{' + repetItem + '}]}</label>');
                 var elementResultEmpty = $('<span class="search-notmatchuser" ng-show="!' + repetInObject + '">No hay coincidencias</span>');
                 var elemContBtnsInf = $('<div class="cont-btns-inf" ng-show="' + repetInObject + '.length" >');
-                var elementBtnResult = $('<button class="mdl-button mdl-button--primary mdl-button--raised btn-multiple-action" '
+                var elementBtnResult = $('<button class="btn-multiple-action mdl-button mdl-button--primary mdl-button--raised" '
                                         + attrMultipleFun + '>Seleccionar</button>');
 
                 // Prepare conteiner

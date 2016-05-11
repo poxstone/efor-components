@@ -268,7 +268,7 @@
                     // If function has params but only are variables from scope
                     var params = strFun.match(/\(.*\)/i) ? strFun.match(/\(.*\)/i)[0].replace(/\(|\)| */ig,'').split(',')[0] : '';
                     // Cut functon by obkects dots
-                    var methods = strFun.match(/[a-z0-9]+\.[a-z0-9]+\(?/ig) ? strFun.split('(')[0].split('.') : strFun;
+                    var methods = strFun.match(/[a-z0-9]+\.[a-z0-9]+\(?/ig) ? strFun.split('(')[0].split('.') : [strFun.replace(/\(.{0,}\)/, '')];
                     var returnFunction;
 
                     // Make methods function
@@ -280,13 +280,21 @@
                     // Convert string param in object from scope
                     if (params) {
                         var returnParm;
-                        var params = params.split('.');
 
-                        for (var param in params) {
-                            var method = params[param];
-                            returnParm = returnParm ? returnParm[method] : scope[method];
+                        // The param is string
+                        if ( typeof(params).match(/^'.+'$/i) ) {
+                            returnParm = params.replace(/'/g, '');
+
+                        } else {
+                            var params = params.split('.');
+
+                            for (var param in params) {
+                                var method = params[param];
+                                returnParm = returnParm ? returnParm[method] : scope[method];
+                            }
 
                         }
+
                         // Return function with only first param
                         return function() {returnFunction(returnParm)};
 

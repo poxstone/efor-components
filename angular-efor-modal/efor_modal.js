@@ -145,7 +145,7 @@
             // search script url for replace with html template
             var script_sheet = document.querySelector('script[src*="efor_modal.js"]');
             script_sheet = script_sheet ? script_sheet.src.replace('efor_modal.js', 'modal_confirm_action.html') : null;
-            console.log(124);
+
             return script_sheet;
 
         };

@@ -28,18 +28,15 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
             handler;
 
         }
-
     };
     //this asign a messager function to use
     var requestNotificationChannel = requestNotificationChannel || notificate;
 
     var builder = function(api, method) {
-        return function(args, callback, notShowLoading) {
+        return function(args, callback, options) {
             // Validate if show loading div
-            if (!notShowLoading) {
-                requestNotificationChannel.requestStarted();
-                
-            }
+            var options = options || {};
+            requestNotificationChannel.requestStarted(options.loadingClass);
 
             objectDatesToString(args);
             var deferred = $q.defer();
@@ -49,13 +46,8 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
                 callback(resp);
                 $rootScope.$apply(deferred.resolve(resp));
                 // Hidde loading widget
-                if (!notShowLoading) {
-                    requestNotificationChannel.requestEnded();
-                    
-                }
-
+                requestNotificationChannel.requestEnded(options.loadingClass);
             });
-            
             return deferred.promise;
 
         };
@@ -123,17 +115,18 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
         }, apiRoot);
     };
 
+    // Load from base html
     $window.api_load = function(api, version) {
-        requestNotificationChannel.requestStarted();
+        // Open angular broadcast _START_REQUEST_ (block screen to load endpoints)
+        requestNotificationChannel.requestStarted('block');
+
         service.loadService(api, version, function() {
             if (service.loaded_apis == service.total_apis) {
                 $rootScope.$broadcast(service.ENDPOINTS_READY);
                 requestNotificationChannel.requestEnded();
 
             }
-
         });
-
     };
 
     if ($window.google_client_loaded && !$window.loading_apis) {

@@ -3,12 +3,12 @@
 var loadApp = angular.module('$loadAppWidget',[]);
 
 loadApp
-    .directive('loadingWidget', ['requestNotificationChannel', loadingWidget])
+    .directive('loadingWidget', ['$rootScope', 'requestNotificationChannel', loadingWidget])
     .directive('whenScrolled', [whenScrolled] )
-    .service('requestNotificationChannel',['$rootScope', requestNotificationChannel]);
+    .service('requestNotificationChannel', ['$rootScope', requestNotificationChannel]);
     
 //directive
-function loadingWidget(requestNotificationChannel) {
+function loadingWidget($rootScope, requestNotificationChannel) {
     return {
         restrict: "A",
         link: function (scope, element, attrs, ctrls) {
@@ -50,11 +50,15 @@ function requestNotificationChannel($rootScope){
     var _END_REQUEST_ = '_END_REQUEST_';
 
     // Publish start request notification
-    var requestStarted = function() {
+    var requestStarted = function(_loadingClass) {
+        $rootScope.loadingClass = _loadingClass || '';
+
         $rootScope.$broadcast(_START_REQUEST_);
     };
     // Publish end request notification
-    var requestEnded = function() {
+    var requestEnded = function(_loadingClass) {
+        $rootScope.loadingClass = '';
+        
         $rootScope.$broadcast(_END_REQUEST_);
     };
     // Subscribe to start request notification

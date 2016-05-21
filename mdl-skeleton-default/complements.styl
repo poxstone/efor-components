@@ -25,13 +25,16 @@ input.ng-invalid.ng-touched
         
 .mdl-button
     text-transform none
+    
 .mini-input.mdl-textfield
     padding-bottom 10px
+    
     .mdl-textfield__label:after
         bottom 10px
 
 .mini-input.mdl-textfield
     padding-bottom 10px
+    
     .mdl-textfield__label:after
         bottom 10px
 
@@ -48,8 +51,10 @@ input.mdl-textfield__input[type="file"]
 //fonts
 .font-w-bold
     font-weight bold
+    
 .font-w-normal
     font-weight normal
+    
 .font-w-light
     font-weight light
 
@@ -76,14 +81,19 @@ input.mdl-textfield__input[type="file"]
     	
 .text-muted
 	color $gray
+    
 .text-primary
 	color $primary
+    
 .text-success
 	color $success
+    
 .text-info
 	color $info
+    
 .text-warning
 	color $warning
+    
 .text-danger
 	color $danger
 
@@ -235,8 +245,10 @@ mdlButton-default($bg=#ccc, $col=#333, $col2=#333 , args...)
         &
             color $col args
             background $bg args
+            
             &:hover
                 background lighten($bg,20%) args
+                
 //mdlButton-default #000 #fff #000
                 
 // Primary
@@ -246,13 +258,17 @@ mdlButton-primary($bg=blue, $col=#fff, $col2=blue , args...)
     .mdl-button--accent.mdl-button--accent.mdl-button--fab
         /.mdl-button--accent.mdl-button--accent
             color $col2 args
+            
             &:hover
                 color $col args
+                
         &
             background $bg args
             color $col args
+            
             &:hover
                 background lighten($bg,20%) args
+                
 //mdlButton-primary #000 #fff #000
                 
 // Secundary
@@ -261,12 +277,14 @@ mdlButton-secondary($bg=purple, $col=#fff, $col2=purple , args...)
         /.mdl-button--primary.mdl-button--primary
         /.mdl-button.mdl-button--colored
             color $col2 args
+            
             &:hover
                 background lighten($bg,20%) args
                 color $col
         &
             background $bg args
             color $col args
+            
             &:hover
                 background lighten($bg,20%) args
 //mdlButton-secondary #000 #fff #000
@@ -280,6 +298,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         /.mdl-button[disabled][disabled]
         /.mdl-button.mdl-button--disabled.mdl-button--disabled
             color $col2 args
+            
         &
             background $bg args
             color $col args
@@ -287,32 +306,167 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
 
 //load widget
 *[loading-widget]
-    background rgba(255,255,255,0.75);
     position fixed
+    //background transparent
     left 0
     right 0
     top 0
-    bottom 0
     width 100%
-    height 100%
+    height 0
     box-sizing border-box
     z-index 1000
-    text-align denter
-    transition ease-in-out 1s all
-    opacity 1
-    
+    text-align center
+    transition ease-in-out 1s opacity
+    //transition-property opacity
+        
     &[style*="display: none"]
         display block !important
+        color red
+        
+            
+    &[style="display: block;"]
+        z-index 9999
+        color blue
+        
+        .tag-loading
+            display block
+            opacity 1
+            top 0px
+        
+        &.pass
+            .tag-loading
+                opacity 0
+                display none
+
+    .tag-loading
+        top -50px
         opacity 0
-        z-index -1
-    
-    .message
-        position relative
         display block
+        transition ease-in-out 1.25s all
+        
+    .tag-loading
+    .tag-block-screen
         margin 10px auto
-        max-width 250px
+        position absolute
+        background #FFF0B5
+        color #333
         text-align center
-        border-radius 2px
-        padding 2px 8px
-        box-shadow rgba(0,0,0,0.25) 2px 2px 6px 0
-        background $yellow
+        max-width 200px
+        left 0
+        right 0
+        border-radius 4px
+        padding 2px 6px
+    
+    .tag-block-screen
+        display none
+        
+    &:before
+        content ''
+        height 100%
+        display none
+        background rgba(#fff, .75)
+        position fixed
+        top 0
+        left 0
+        right 0
+        bottom 0
+        width 100%
+        height 100%
+        z-index 0
+        transition ease-in-out 1s all
+        
+    &.block
+        display none
+        
+    &.block
+    &.block-remove
+        &:before
+            display block
+            
+        .tag-block-screen
+            transition ease-in-out 1s opacity
+            display block
+            
+    &.block-remove
+        &:before
+        .tag-block-screen
+            opacity 0
+        
+.efor-layout__footer
+    position fixed
+    bottom -1px
+    height 1px
+    left 0
+    right 0
+    width auto
+    z-index 10
+    user-select none
+    
+    @media(max-width $screen-md)
+        position static
+        height auto
+            
+    .wrapper
+        //width 90%
+        position relative
+    
+    .efor-button--fab
+        display block
+        position absolute
+        bottom $paddingBox *2
+        right $paddingBox *3
+        transition ease-in-out all 250ms
+        display none
+        
+        &:hover
+            bottom $paddingBox +3
+            box-shadow rgba(0,0,0,0.20) 0 2px 4px 0, rgba(0,0,0,0.20) 0 8px 8px 0
+            
+        &:active
+            box-shadow rgba(0,0,0,0.10) 0 2px 2px 0
+            
+        .efor-logo_ef
+            width 66%
+            height auto
+            margin auto
+            margin-top 25%
+            
+    .efor-footer-credits
+        display block
+        position relative
+        
+        img.efor-footer
+            float right
+            position absolute
+            right 0
+            bottom 0
+            width 170px
+        
+        .powerby
+            display none
+            text-align center
+            color #000
+            opacity 0.5
+            width 100px
+            margin auto
+            
+            img
+                max-width 100%
+            
+            span
+                font-size $text_ps
+
+            .efor-mono
+                width 100%
+                display block
+                margin auto
+                margin-top -8px
+    
+        @media(max-width $screen-md)
+            position static
+            
+            .efor-footer
+                display none
+            
+            .powerby
+                display block

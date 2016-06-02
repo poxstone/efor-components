@@ -9,7 +9,7 @@
 
 .mdl-button
     text-transform none
-    
+
 .material-icons
     vertical-align middle
 
@@ -22,19 +22,19 @@ input.ng-invalid.ng-touched
         background-color #f44336
         visibility visible
         left 0
-        
+
 .mdl-button
     text-transform none
-    
+
 .mini-input.mdl-textfield
     padding-bottom 10px
-    
+
     .mdl-textfield__label:after
         bottom 10px
 
 .mini-input.mdl-textfield
     padding-bottom 10px
-    
+
     .mdl-textfield__label:after
         bottom 10px
 
@@ -51,10 +51,10 @@ input.mdl-textfield__input[type="file"]
 //fonts
 .font-w-bold
     font-weight bold
-    
+
 .font-w-normal
     font-weight normal
-    
+
 .font-w-light
     font-weight light
 
@@ -78,22 +78,22 @@ input.mdl-textfield__input[type="file"]
     td&
     th&
         text-align justify
-        
+
 .text-muted
     color $gray
-    
+
 .text-primary
     color $primary
-    
+
 .text-success
     color $success
-    
+
 .text-info
     color $info
-    
+
 .text-warning
     color $warning
-    
+
 .text-danger
     color $danger
 
@@ -102,7 +102,7 @@ input.mdl-textfield__input[type="file"]
     overflow hidden
     overflow-x auto
     padding-bottom 50px
-    
+
 // TABLES
 tr, th, td
     &[ng-click]
@@ -113,10 +113,10 @@ tr, th, td
     border-left none
     border-right none
     border-top none
-    
+
     thead
         tr
-            background transparent 
+            background transparent
         th
             transition ease-in-out 250ms all
             padding 0 0 0 $paddingBox
@@ -134,97 +134,97 @@ tr, th, td
                     opacity 0
                     transform rotate(0)
                     transition ease-in-out 250ms all
-                    
+
                 &:hover
                     background $grey-200
-            
+
                     &:before
                         opacity 0.5
-                
+
             &.order
                 font-weight bold
                 color $grey-700
-                
+
                 &:before
                     opacity 1
-                    
+
             &.reverse
                 &:before
                     transform rotate(180deg)
-                    
+
             &.active
                 font-weight bold
-                
+
     tbody
         tr
             height auto
-                
+
             td
                 height auto
                 padding 4px 0 4px $paddingBox
                 border-top 1px solid $grey-200
                 border-bottom 1px solid $grey-200
-                
+
                 .mdl-switch
                     display inline
-                    
+
                 &:last-child
                     text-align right
-    
+
     /.text-overflow
         display block
         max-width 320px
         overflow hidden
         text-overflow ellipsis
         white-space nowrap
-        
+
         &.owner
             max-width 150px
-    
+
     .mdl-button--icon
         size 24px
         min-width 24px
         color $grey-600
-        
+
 .tbody-description
     > tr
         height auto !important
-        
+
         > th, > td
             border none
             padding-top 6px !important
             padding-bottom 6px !important
             min-height 0
             height auto
-                
+
     /.tr-description
         display none
-        
+
         > td, > th
             white-space pre-line
             text-align left
             padding-top 0
             padding-bottom 0
             font-size $text_ps
-            
+
             &::first-line
             &::first-letter
                 font-size $text_p
                 font-style italic
-            
+
         &:hover
             background transparent !important
-            
+
     &.description-open
         background rgba(80,80,80,0.05)
-        
+
         tr
             > th, > td
                 font-weight bold
-            
+
         .tr-description
             display table-row
-        
+
             > td, > th
                 font-weight normal
                 padding-bottom 12px
@@ -238,19 +238,19 @@ mdlButton-default($bg=#ccc, $col=#333, $col2=#333 , args...)
     .mdl-button--fab
         /.mdl-button
             color $col2 args
-            
+
             &:hover
                 background lighten($bg,20%) args
                 color $col args
         &
             color $col args
             background $bg args
-            
+
             &:hover
                 background lighten($bg,20%) args
-                
+
 //mdlButton-default #000 #fff #000
-                
+
 // Primary
 mdlButton-primary($bg=blue, $col=#fff, $col2=blue , args...)
     .mdl-button--fab.mdl-button--colored
@@ -258,37 +258,37 @@ mdlButton-primary($bg=blue, $col=#fff, $col2=blue , args...)
     .mdl-button--accent.mdl-button--accent.mdl-button--fab
         /.mdl-button--accent.mdl-button--accent
             color $col2 args
-            
+
             &:hover
                 color $col args
-                
+
         &
             background $bg args
             color $col args
-            
+
             &:hover
                 background lighten($bg,20%) args
-                
+
 //mdlButton-primary #000 #fff #000
-                
+
 // Secundary
 mdlButton-secondary($bg=purple, $col=#fff, $col2=purple , args...)
     .mdl-button--raised.mdl-button--colored
         /.mdl-button--primary.mdl-button--primary
         /.mdl-button.mdl-button--colored
             color $col2 args
-            
+
             &:hover
                 background lighten($bg,20%) args
                 color $col
         &
             background $bg args
             color $col args
-            
+
             &:hover
                 background lighten($bg,20%) args
 //mdlButton-secondary #000 #fff #000
-    
+
 // Disable
 mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     .mdl-button--fab[disabled][disabled]
@@ -298,7 +298,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         /.mdl-button[disabled][disabled]
         /.mdl-button.mdl-button--disabled.mdl-button--disabled
             color $col2 args
-            
+
         &
             background $bg args
             color $col args
@@ -318,21 +318,21 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     text-align center
     transition ease-in-out 1s opacity
     //transition-property opacity
-        
+
     &[style*="display: none"]
         display block !important
         color red
-        
-            
+
+
     &[style="display: block;"]
         z-index 9999
         color blue
-        
+
         .tag-loading
             display block
             opacity 1
             top 0px
-        
+
         &.pass
             .tag-loading
                 opacity 0
@@ -343,7 +343,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         opacity 0
         display block
         transition ease-in-out 1.25s all
-        
+
     .tag-loading
     .tag-block-screen
         margin 10px auto
@@ -356,10 +356,10 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         right 0
         border-radius 4px
         padding 2px 6px
-    
+
     .tag-block-screen
         display none
-        
+
     &:before
         content ''
         height 100%
@@ -374,24 +374,24 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         height 100%
         z-index 0
         transition ease-in-out 1s all
-        
+
     &.block
         display none
-        
+
     &.block
     &.block-remove
         &:before
             display block
-            
+
         .tag-block-screen
             transition ease-in-out 1s opacity
             display block
-            
+
     &.block-remove
         &:before
         .tag-block-screen
             opacity 0
-        
+
 .efor-layout__footer
     position fixed
     bottom -1px
@@ -401,20 +401,20 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     width auto
     z-index 10
     user-select none
-    
+
     @media(max-width $screen-md)
         position static
         height auto
-            
+
     .wrapper
         //width 90%
         position relative
-    
+
     .efor-button--fab
         display block
         position absolute
-        bottom $paddingBox *2
-        right $paddingBox *3
+        bottom 10px *2
+        right 10px *3
         transition ease-in-out all 250ms
         background #fff
         border-radius 1000px
@@ -422,33 +422,35 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         vertical-align middle
         line-height 50px
         box-shadow rgba(0,0,0,0.25) 0 0 3px 0
+        text-align center
         display none
-        
+
         &:hover
             bottom ($paddingBox + 15)
             box-shadow rgba(0,0,0,0.20) 0 2px 4px 0, rgba(0,0,0,0.20) 0 8px 8px 0
-            
+
         &:active
             box-shadow rgba(0,0,0,0.10) 0 2px 2px 0
-            
+
         .efor-logo_ef
             width 66%
             height auto
             margin -5%
-            margin-top 17.5%
-            
+            margin-top -10%
+            vertical-align middle
+
     .efor-footer-credits
         display block
         position relative
         text-decoration none
-        
+
         img.efor-footer
             float right
             position absolute
             right 0
             bottom 0
             width 170px
-        
+
         .powerby
             display none
             text-align center
@@ -456,10 +458,10 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             opacity 0.5
             width 100px
             margin auto
-            
+
             img
                 max-width 100%
-            
+
             span
                 font-size $text_ps
 
@@ -468,24 +470,24 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
                 display block
                 margin auto
                 margin-top -8px
-    
+
         @media(max-width $screen-md)
             position static
-            
+
             .efor-footer
                 display none
-            
+
             .powerby
                 display block
 
 .social-icons
     text-align center
     padding 0 0 10px
-    
+
     a
         display inline-block
         margin 4px
-        
+
     img
         width 24px
         height auto

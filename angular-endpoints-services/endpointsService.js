@@ -40,12 +40,21 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
 
             objectDatesToString(args);
             var deferred = $q.defer();
-            if (args['domain'] == ''){
-                args['domain'] = $window.DOMAIN;
+
+            // Always send domain
+            if (!args.domain){
+                args.domain = $window.DOMAIN || $window.domain || '' ;
+
+                // Send warning if don't send domain becouse is required
+                if (!args.domain) {
+                    $log.warn('endpointService don\'t send domain', args.domain);
+
+                }
             }
             gapi.client[api][method](args).execute(function(resp) {
                 callback(resp);
                 $rootScope.$apply(deferred.resolve(resp));
+
                 // Hidde loading widget
                 requestNotificationChannel.requestEnded(options.loadingClass);
             });
@@ -54,29 +63,29 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
         };
 
     }
-    
+
     service.authorize = function(client_id, scopes, auth_callback) {
         gapi.auth.authorize(
             {client_id: client_id, scope: scopes, immediate: true},
             service.auth_callback_builder(client_id, scopes, auth_callback)
-        
+
         );
-    
+
     }
-    
+
     service.auth_callback_builder = function(client_id, scopes, auth_callback) {
         return  function(authResult) {
             if (authResult.error) {
                 gapi.auth.authorize(
                         {client_id: client_id, scope: scopes, immediate: false},
                         auth_callback
-    
+
                     );
             } else{
                 return auth_callback(authResult);
-    
+
             }
-            
+
         }
     }
 
@@ -110,7 +119,7 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
                 callback();
 
             });
-            
+
             $rootScope.$$phase || $rootScope.$apply();
 
         }, apiRoot);

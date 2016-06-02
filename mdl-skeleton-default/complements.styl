@@ -59,54 +59,54 @@ input.mdl-textfield__input[type="file"]
     font-weight light
 
 .text-a-left
-	&
-	td&
-	th&
-    	text-align left
+    &
+    td&
+    th&
+        text-align left
 .text-a-center
-	&
-	td&
-	th&
-    	text-align center
+    &
+    td&
+    th&
+        text-align center
 .text-a-right
-	&
-	td&
-	th&
-    	text-align right
+    &
+    td&
+    th&
+        text-align right
 .text-a-justify
-	&
-	td&
-	th&
-    	text-align justify
-    	
+    &
+    td&
+    th&
+        text-align justify
+        
 .text-muted
-	color $gray
+    color $gray
     
 .text-primary
-	color $primary
+    color $primary
     
 .text-success
-	color $success
+    color $success
     
 .text-info
-	color $info
+    color $info
     
 .text-warning
-	color $warning
+    color $warning
     
 .text-danger
-	color $danger
+    color $danger
 
 .table-overflow
     display block
     overflow hidden
     overflow-x auto
     padding-bottom 50px
-	
+    
 // TABLES
 tr, th, td
-	&[ng-click]
-		cursor pointer
+    &[ng-click]
+        cursor pointer
 
 .table-list
     width 100%
@@ -416,10 +416,16 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         bottom $paddingBox *2
         right $paddingBox *3
         transition ease-in-out all 250ms
+        background #fff
+        border-radius 1000px
+        size 50px
+        vertical-align middle
+        line-height 50px
+        box-shadow rgba(0,0,0,0.25) 0 0 3px 0
         display none
         
         &:hover
-            bottom $paddingBox +3
+            bottom ($paddingBox + 15)
             box-shadow rgba(0,0,0,0.20) 0 2px 4px 0, rgba(0,0,0,0.20) 0 8px 8px 0
             
         &:active
@@ -428,12 +434,13 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         .efor-logo_ef
             width 66%
             height auto
-            margin auto
-            margin-top 25%
+            margin -5%
+            margin-top 17.5%
             
     .efor-footer-credits
         display block
         position relative
+        text-decoration none
         
         img.efor-footer
             float right
@@ -470,3 +477,15 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             
             .powerby
                 display block
+
+.social-icons
+    text-align center
+    padding 0 0 10px
+    
+    a
+        display inline-block
+        margin 4px
+        
+    img
+        width 24px
+        height auto

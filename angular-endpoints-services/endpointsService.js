@@ -40,8 +40,9 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
 
             objectDatesToString(args);
             var deferred = $q.defer();
-            args['domain'] = $window.DOMAIN;
-
+            if (args['domain'] == ''){
+                args['domain'] = $window.DOMAIN;
+            }
             gapi.client[api][method](args).execute(function(resp) {
                 callback(resp);
                 $rootScope.$apply(deferred.resolve(resp));

@@ -234,74 +234,110 @@ tr, th, td
 
 // Default
 mdlButton-default($bg=#ccc, $col=#333, $col2=#333 , args...)
-    .mdl-button--raised
-    .mdl-button--fab
-        /.mdl-button
-            color $col2 args
-
+    &.mdl-button--raised
+    &.mdl-button--fab
+    &.mdl-button
+        color $col args
+        background $bg args
+        
+        &:not(.mdl-button.mdl-button--accent)
             &:hover
                 background lighten($bg,20%) args
                 color $col args
-        &
-            color $col args
-            background $bg args
+                
+                &[disabled]
+                    &, &:hover
+                        color $col2 args
+                        background $bg args
+                        opacity 0.5
+    
+    &.mdl-button:not(.mdl-button--accent)
+        color $col args
 
-            &:hover
-                background lighten($bg,20%) args
-
+        &:hover
+            background lighten($bg,20%) args
+            color $col2 args
+        
+        &[disabled]
+            &, &:hover
+                color $col args
+                background $bg args
+                opacity 0.5
 //mdlButton-default #000 #fff #000
 
 // Primary
 mdlButton-primary($bg=blue, $col=#fff, $col2=blue , args...)
-    .mdl-button--fab.mdl-button--colored
-    .mdl-button--accent.mdl-button--accent.mdl-button--raised
-    .mdl-button--accent.mdl-button--accent.mdl-button--fab
-        /.mdl-button--accent.mdl-button--accent
+    &.mdl-button--fab.mdl-button--colored
+    &.mdl-button--accent.mdl-button--accent.mdl-button--raised
+    &.mdl-button--accent.mdl-button--accent.mdl-button--fab
+        background $bg args
+        color $col args
+
+        &:hover
+            background lighten($bg,20%) args
+            color $col args
+
+        &, &.mdl-button--accent.mdl-button--accent
             color $col2 args
 
             &:hover
                 color $col args
-
-        &
-            background $bg args
-            color $col args
-
-            &:hover
-                background lighten($bg,20%) args
-
+                
+            &[disabled]
+                &, &:hover
+                    color $col2 args
+                    background $bg args
+                    opacity 0.5
+    
+    &.mdl-button--accent.mdl-button--accent
+    &.mdl-button--primary
+        color $bg args
+        
+        &[disabled]
+            &, &:hover
+                color $bg args
+                opacity 0.5
 //mdlButton-primary #000 #fff #000
 
 // Secundary
 mdlButton-secondary($bg=purple, $col=#fff, $col2=purple , args...)
-    .mdl-button--raised.mdl-button--colored
-        /.mdl-button--primary.mdl-button--primary
-        /.mdl-button.mdl-button--colored
+    &.mdl-button--raised.mdl-button--colored
+        background $bg args
+        color $col args
+
+        &
+        &.mdl-button.mdl-button--colored
             color $col2 args
 
             &:hover
-                background lighten($bg,20%) args
                 color $col
-        &
-            background $bg args
-            color $col args
-
-            &:hover
                 background lighten($bg,20%) args
-//mdlButton-secondary #000 #fff #000
+            
+            &[disabled]
+                &, &:hover
+                    background $bg args
+                    opacity 0.5
+                    
+    &.mdl-button--primary.mdl-button--primary
+    &.mdl-button--colored:not(.mdl-button--fab.mdl-button--colored)
+        color $bg args
+//button\ mdlButton-secondary #000 #fff #000
 
 // Disable
 mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
-    .mdl-button--fab[disabled][disabled]
-    .mdl-button--fab.mdl-button--disabled.mdl-button--disabled
-    .mdl-button--raised[disabled][disabled]
-    .mdl-button--raised.mdl-button--disabled.mdl-button--disabled
-        /.mdl-button[disabled][disabled]
-        /.mdl-button.mdl-button--disabled.mdl-button--disabled
-            color $col2 args
+    &.mdl-button--fab[disabled][disabled]
+    &.mdl-button--fab.mdl-button--disabled.mdl-button--disabled
+    &.mdl-button--raised[disabled][disabled]
+    &.mdl-button--raised.mdl-button--disabled.mdl-button--disabled
+        color $col2 args
 
-        &
-            background $bg args
-            color $col args
+        &:hover, &:focus
+            background $bg args !important
+            color $col args !important
+            
+    &.mdl-button[disabled][disabled]
+    &.mdl-button.mdl-button--disabled.mdl-button--disabled
+        color $col2 args
 //mdlButton-disabled #000 #fff #000
 
 //load widget

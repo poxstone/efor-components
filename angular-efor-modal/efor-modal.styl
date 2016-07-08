@@ -245,8 +245,20 @@ $textGray = $textGray is defined ? $textGray : #666666
 
     //mod colors
     .mdl-textfield
-        .mdl-textfield__input
-            border-bottom 1px rgba(#fff,1) solid
+        .is-invalid.is-upgraded
+            // pristine indique if is initial value not mod
+                        
+        input.mdl-textfield__input
+            &
+            &.ng-pristine
+                border-bottom 1px rgba(#fff,1) solid
+                
+                & + .mdl-textfield__label
+                    color rgba(#fff,.33)
+                    
+                    &:after
+                        background-color #fff
+                        
         &
         &.is-focused
         &.is-dirty
@@ -254,6 +266,7 @@ $textGray = $textGray is defined ? $textGray : #666666
                 color rgba(#fff,.33)
                 border-Color #fff
                 font-weight normal
+
                 &:after
                     background-color $blue
                     height 1px

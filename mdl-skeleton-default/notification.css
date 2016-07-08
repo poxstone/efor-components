@@ -1,1 +1,54 @@
-.ui-notification{border-radius:2px;position:fixed;z-index:9999;box-shadow:5px 5px 10px rgba(0,0,0,0.3);cursor:pointer;width:300px;color:#fff;background:rgba(38,50,56,0.85);transition:all ease .5s;}.ui-notification.killed{opacity:0;transition:opacity ease 1s}.ui-notification > h3{display:block;margin:10px 10px 0 10px;padding:0 0 5px 0;text-align:left;font-size:20px;font-weight:bold;border-bottom:1px solid #808080;line-height:1.2em;color:#f1f1f1;font-weight:normal}.ui-notification a{text-decoration:underline;font-weight:normal;COLOR:#fff;}.ui-notification a:hover{text-decoration:underline}.ui-notification > .message{margin:10px 10px 10px 10px}.ui-notification.warning{color:#ff7623}.ui-notification.error{color:#ff6d6a}.ui-notification.success{color:#8bc34a}.ui-notification.info{color:#87c7ff}.ui-notification:hover{background:#263238;opacity:1}
+.ui-notification {
+  border-radius: 2px;
+  position: fixed;
+  z-index: 9999;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  width: 300px;
+  color: #fff;
+  background: rgba(38,50,56,0.85);
+  transition: all ease 0.5s;
+}
+.ui-notification.killed {
+  opacity: 0;
+  transition: opacity ease 1s;
+}
+.ui-notification > h3 {
+  display: block;
+  margin: 10px 10px 0 10px;
+  padding: 0 0 5px 0;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #808080;
+  line-height: 1.2em;
+  color: #f1f1f1;
+  font-weight: normal;
+}
+.ui-notification a {
+  text-decoration: underline;
+  font-weight: normal;
+  COLOR: #fff;
+}
+.ui-notification a:hover {
+  text-decoration: underline;
+}
+.ui-notification > .message {
+  margin: 10px 10px 10px 10px;
+}
+.ui-notification.warning {
+  color: #ff7623;
+}
+.ui-notification.error {
+  color: #ff6d6a;
+}
+.ui-notification.success {
+  color: #8bc34a;
+}
+.ui-notification.info {
+  color: #87c7ff;
+}
+.ui-notification:hover {
+  background: #263238;
+  opacity: 1;
+}

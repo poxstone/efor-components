@@ -508,10 +508,9 @@
     border-bottom: 1px solid #eee;
     width: 100%;
     flex-grow: 0;
-    height: 100%;
   }
   .config-box .config-tabs a {
-    min-width: 100px;
+    min-width: 30px;
     flex-shirnk: 0;
   }
 }
@@ -624,6 +623,7 @@
 .config-box .mdl-checkbox,
 .config-box .mdl-switch {
   margin-bottom: 10px;
+  height: auto;
 }
 .white-box {
   background: #fff;

@@ -411,6 +411,9 @@ $textGray = $textGray is defined ? $textGray : #666666
             margin 0
             font-size $text_h4
             text-align center
+            overflow hidden
+            white-space nowrap
+            text-overflow ellipsis
 
             .u
                 display inline-block
@@ -434,12 +437,14 @@ $textGray = $textGray is defined ? $textGray : #666666
         display flex
         flex-grow 1
         width 100%
+        max-height calc(100% - 135px)
 
         > .mdl-grid
             height auto
             padding 5px $paddingBox*2
             @media (max-width: $screen-md)
                 flex-direction column
+                display block
 
 .config-box
     background #fff
@@ -481,6 +486,9 @@ $textGray = $textGray is defined ? $textGray : #666666
             padding 1px
             margin 0
             font-size $text_h4
+            overflow hidden
+            white-space nowrap
+            text-overflow ellipsis
 
             .u
                 text-style italic
@@ -503,13 +511,15 @@ $textGray = $textGray is defined ? $textGray : #666666
         flex-grow 1
         width 100%
         margin-bottom 60px
+        max-height calc(100% - 135px)
 
         > .mdl-grid
             height auto
             box-sizing border-box
             width 100%
             @media (max-width: $screen-md)
-                flex-direction column
+                flex-direction column 
+                display block
 
     .config-tabs
         padding-top $paddingBox*1.5
@@ -524,6 +534,7 @@ $textGray = $textGray is defined ? $textGray : #666666
             border-bottom 1px solid $grey-200
             width 100%
             flex-grow 0
+            max-height 55px // for maintain design border bottom
 
             a
                 min-width 30px
@@ -559,6 +570,8 @@ $textGray = $textGray is defined ? $textGray : #666666
         align-items flex-start
         flex-direction column
         width 69%
+        max-height 100%
+        overflow auto
 
         @media (max-width: $screen-md)
             width calc(100% - 16px)
@@ -685,6 +698,9 @@ $textGray = $textGray is defined ? $textGray : #666666
             margin 0
             font-size $text_h4
             line-height 1.2em !important
+            overflow hidden
+            white-space nowrap
+            text-overflow ellipsis
 
     .info-footer
         position relative

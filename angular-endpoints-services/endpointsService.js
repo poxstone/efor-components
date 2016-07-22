@@ -64,25 +64,43 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
 
     }
 
-    service.authorize = function(client_id, scopes, auth_callback) {
-        gapi.auth.authorize(
-            {client_id: client_id, scope: scopes, immediate: true},
-            service.auth_callback_builder(client_id, scopes, auth_callback)
+    // This arra store functions for execute before callbacks
+    var queueFun = [];
 
-        );
-
+    // This function run all stored functions
+    function runQueueFun(response) {
+        for (var i=0; i < queueFun.length; i++) {
+            var funBack = queueFun[i];
+            if ( typeof(funBack) == 'function' ) {
+                funBack(response);
+            } else {
+                $log.warn('This is not a function for callback: ', funBack );
+            }
+        }
+        queueFun = [];
     }
 
-    service.auth_callback_builder = function(client_id, scopes, auth_callback) {
+    service.authorize = function(client_id, scopes, auth_callback) {
+        // Store function in queue
+        queueFun.push(auth_callback);
+        // send google auth
+        gapi.auth.authorize(
+            {client_id: client_id, scope: scopes, immediate: true},
+            service.auth_callback_builder(client_id, scopes)
+        );
+    }
+
+    service.auth_callback_builder = function(client_id, scopes) {
         return  function(authResult) {
             if (authResult.error) {
                 gapi.auth.authorize(
                         {client_id: client_id, scope: scopes, immediate: false},
-                        auth_callback
+                        runQueueFun // send with errors
 
                     );
             } else{
-                return auth_callback(authResult);
+                // run all functions queue
+                return runQueueFun(authResult);
 
             }
 

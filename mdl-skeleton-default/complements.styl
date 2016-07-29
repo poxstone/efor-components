@@ -464,18 +464,14 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             opacity 0
 
 .efor-layout__footer
-    position fixed
     bottom -1px
-    height 1px
     left 0
     right 0
     width auto
     z-index 10
     user-select none
-
-    @media(max-width $screen-md)
-        position static
-        height auto
+    position static
+    height auto
 
     .wrapper
         //width 90%
@@ -514,6 +510,9 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         display block
         position relative
         text-decoration none
+        position static
+        width 100px
+        margin auto
 
         img.efor-footer
             float right
@@ -523,7 +522,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             width 170px
 
         .powerby
-            display none
+            display block
             text-align center
             color #000
             opacity 0.5
@@ -542,16 +541,8 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
                 margin auto
                 margin-top -8px
 
-        @media(max-width $screen-md)
-            position static
-            width 100px
-            margin auto
-
-            .efor-footer
-                display none
-
-            .powerby
-                display block
+        .efor-footer
+            display none
 
 .social-icons
     text-align center

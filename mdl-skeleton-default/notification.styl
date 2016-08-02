@@ -22,6 +22,20 @@ $noti_success = $noti_success is defined ? $noti_success :  #8bc34a
         opacity 0
         transition opacity ease 1s
 
+    &:before
+        content '\00d7'
+        display block
+        background rgba(#fff, 0.05) 
+        opacity 0.5
+        size 20px
+        line-height @height
+        text-align center
+        float right
+        color #fff
+        transition opacity ease-in-out 250ms
+        border-radius 0 0 0 4px
+        font-size 14px
+
     & > h3
         display block
         margin 10px 10px 0 10px
@@ -63,3 +77,8 @@ $noti_success = $noti_success is defined ? $noti_success :  #8bc34a
     &:hover
         background $noti_background_hover
         opacity 1
+
+        &:before
+            opacity 1
+            box-shadow rgba(#000, 0.25) 0 0 4px 0
+            background rgba(#fff, 0.25) 

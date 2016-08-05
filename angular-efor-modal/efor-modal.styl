@@ -263,7 +263,7 @@ $textGray = $textGray is defined ? $textGray : #666666
             &.ng-pristine
 
                 & + .mdl-textfield__label
-                    color rgba(#fff,.33)
+                    color rgba(#fff,.75)
                     
                     &:after
                         background-color #fff
@@ -272,13 +272,18 @@ $textGray = $textGray is defined ? $textGray : #666666
         &.is-focused
         &.is-dirty
             .mdl-textfield__label
-                color rgba(#fff,.33)
+                color rgba(#fff,.75)
                 border-Color #fff
                 font-weight normal
 
                 &:after
                     background-color $blue
                     height 1px
+
+        &.is-focused
+        &.is-dirty
+            .mdl-textfield__label
+                font-weight bold
 
         .mdl-radio //radius content
             margin-right $paddingBox

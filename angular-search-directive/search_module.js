@@ -292,7 +292,7 @@
                                 var method = params[param];
                                 returnParm = returnParm ? returnParm[method] : scope[method];
                             }
-                            
+
                         }
 
                         // Return function with only first param

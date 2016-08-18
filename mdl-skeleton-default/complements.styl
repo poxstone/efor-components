@@ -1,5 +1,6 @@
 //mods and complements
 $primary = $primary is defined ? $primary : #3f51b5
+$screen-sm = $screen-sm is definded ? $screen-sm : 480px 
 /*MODS*/
 // fixed vertical position icons in line txt
 .mdl-menu
@@ -102,6 +103,41 @@ input.mdl-textfield__input[type="file"]
     overflow hidden
     overflow-x auto
     padding-bottom 50px
+   
+    @media(max-width $screen-sm)
+        padding-bottom 10px
+
+        > table > thead
+            display none
+
+        > table
+        > table > tbody
+        > table > tbody > tr
+        > table > tbody > tr > td
+            text-align left
+            display block
+            width auto
+
+        > table > tbody > tr
+            padding 20px 20px 10px 20px
+            border-bottom 1px solid #f1f1f1
+
+            > td
+            > td:first-of-type
+                padding 0 !important
+                margin 0
+                white-space normal
+
+                .text-overflow
+                    display inline
+                    max-width 100%
+                    margin-left 0.33em
+
+            > td:before
+                content attr(data-title)':'
+                display inline-block
+                font-weight bold
+                text-indent -0.25em
 
 // MENU popup
 .efor-menu
@@ -465,6 +501,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
 
 .efor-layout__footer
     bottom -1px
+    padding 20px 0
     left 0
     right 0
     width auto

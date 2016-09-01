@@ -13,6 +13,22 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
     /.tutorials-show &
         display inline-block
 
+    &.tuto-gyro
+        animation tutoHightLight-gyro 2s ease-in-out infinite
+
+    &.tuto-slide
+        &.right-top
+        &.top-right
+        &.bottom-right
+        &.right-bottom
+            animation tutoHightLight-slide-right 2s ease-in-out infinite
+
+        &.left-top
+        &.top-left
+        &.bottom-left
+        &.let-bottom
+            animation tutoHightLight-slide-left 2s ease-in-out infinite
+
     @media (max-width $screen-md)
         display none !important
 
@@ -41,6 +57,8 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
             size 35px 300px
         &.tuto-white:before
             background-image url($url_tutor_imgs+'arrow_group_white.svg')
+        &.tuto-blue:before
+            background-image url($url_tutor_imgs+'arrow_group_blue.svg')
 
     &.img-arrow
         &:before
@@ -48,9 +66,14 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
             size 50px 40px
         &.tuto-white:before
             background-image url($url_tutor_imgs+'arrow_curve_white.svg')
+        &.tuto-blue:before
+            background-image url($url_tutor_imgs+'arrow_curve_blue.svg')
 
     &.tuto-white
         color #fff
+
+    &.tuto-blue
+        color #00c0ff 
 
     .tuto-group
         aposition absolute
@@ -201,6 +224,30 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
     	opacity 1
     100% 
     	opacity 0.5
+
+@keyframes tutoHightLight-gyro // for tutorial animations
+    0% 
+        transform rotate(-15deg)
+    50% 
+        transform rotate(0deg)
+    100% 
+        transform rotate(-15deg)
+
+@keyframes tutoHightLight-slide-left // for tutorial animations
+    0% 
+        transform translateX(-15px)
+    50% 
+        transform translateX(0px)
+    100% 
+        transform translateX(-15px)
+
+@keyframes tutoHightLight-slide-right // for tutorial animations
+    0% 
+        transform translateX(15px)
+    50% 
+        transform translateX(0px)
+    100% 
+        transform translateX(15px)
 
 
 

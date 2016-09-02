@@ -16,7 +16,7 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
     &.tuto-gyro
         animation tutoHightLight-gyro 2s ease-in-out infinite
 
-    &.tuto-slide
+    &.tuto-slide-horizontal
         &.right-top
         &.top-right
         &.bottom-right
@@ -28,6 +28,9 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
         &.bottom-left
         &.let-bottom
             animation tutoHightLight-slide-left 2s ease-in-out infinite
+
+    &.tuto-slide-vertical
+        animation tutoHightLight-slide-UP 2s ease-in-out infinite
 
     @media (max-width $screen-md)
         display none !important
@@ -248,6 +251,15 @@ $url_tutor_imgs = $url_tutor_imgs is defined ? $url_tutor_imgs : '/static/compon
         transform translateX(0px)
     100% 
         transform translateX(15px)
+
+@keyframes tutoHightLight-slide-UP // for tutorial animations
+    0% 
+        transform translateY(-15px)
+    50% 
+        transform translateY(0px)
+    100% 
+        transform translateY(-15px)
+
 
 
 

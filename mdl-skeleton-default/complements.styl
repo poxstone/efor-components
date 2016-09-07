@@ -670,7 +670,21 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     padding 0 0 0 0px
     width 100%
     box-sizing border-box
-        //this helped to position menu list in title buttons
+
+    .label
+        opacity .5
+
+    a
+        border-radius $rad
+        color $textColor
+
+        .dot
+            display none
+            font-size 14px
+            margin-top -2px
+            margin-right 4px
+
+//this helped to position menu list in title buttons
 .efor-cont-submenu
     position fixed
     right 40px

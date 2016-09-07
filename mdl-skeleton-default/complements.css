@@ -529,6 +529,20 @@ td[ng-click] {
   text-align: left;
   padding: 0 0 0 0px;
   width: 100%;
+  box-sizing: border-box;
+}
+.pagination .label {
+  opacity: 0.5;
+}
+.pagination a {
+  border-radius: $rad;
+  color: $textColor;
+}
+.pagination a .dot {
+  display: none;
+  font-size: 14px;
+  margin-top: -2px;
+  margin-right: 4px;
 }
 .efor-cont-submenu {
   position: fixed;

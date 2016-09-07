@@ -1,6 +1,10 @@
 //mods and complements
 $primary = $primary is defined ? $primary : #3f51b5
 $screen-sm = $screen-sm is definded ? $screen-sm : 480px 
+$blue-grey = $blue-grey is defined ? $blue-grey : #76868d
+$red = $red is defined ? $red :rgb(255,64,129) 
+$blue-grey-50 = $blue-grey-50 is defined ? $blue-grey-50 : rgba(96,125,139,0.5)
+$paddingBox = $paddingBox is defined ? $paddingBox : 10px
 /*MODS*/
 // fixed vertical position icons in line txt
 .mdl-menu
@@ -27,15 +31,19 @@ input.ng-invalid.ng-touched
         background-color #f44336
         visibility visible
         left 0
+        
 
+// Disabled for tap
+.mdl-tooltip
+    @media(max-width $screen-md)
+        display none !important
+
+.block
+    display block
+    width 100%
+    
 .mdl-button
     text-transform none
-
-.mini-input.mdl-textfield
-    padding-bottom 10px
-
-    .mdl-textfield__label:after
-        bottom 10px
 
 .mini-input.mdl-textfield
     padding-bottom 10px
@@ -102,12 +110,41 @@ input.mdl-textfield__input[type="file"]
 .text-danger
     color $danger
 
+.efor-layout__header-row
+    .efor-logo
+        width 100%
+        height auto
+        display inline-block
+        margin 3px auto auto
+        position relative
+        z-index 5
+        max-height 60px
+
+.efor-layout__content{}
+.efor-content-title-bar
+    color $textColor
+    margin-bottom $paddingBox
+    display block
+    display flex
+
+    h1
+        margin auto
+        font-size $text_p
+        
 .table-overflow
     display block
-    overflow hidden
-    overflow-x auto
-    padding-bottom 50px
-   
+    
+    > table
+        width 100%
+
+        th
+            white-space normal
+            line-height 1.2em
+    
+    &.overflow
+        overflow-x auto
+        padding-bottom 50px
+
     @media(max-width $screen-sm)
         padding-bottom 10px
 
@@ -131,12 +168,15 @@ input.mdl-textfield__input[type="file"]
                 padding 0 !important
                 margin 0
                 white-space normal
+                border none
+                min-height 0
+                height auto
 
                 .text-overflow
                     display inline
                     max-width 100%
                     margin-left 0.33em
-
+                
             > td:before
                 content attr(data-title)':'
                 display inline-block
@@ -163,6 +203,10 @@ input.mdl-textfield__input[type="file"]
         .mdl-menu__item
             height 32px
             line-height 32px
+
+
+.mdl-button.button-to-right
+    float right
 
 // TABLES
 tr, th, td
@@ -418,7 +462,6 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
 //load widget
 *[loading-widget]
     position fixed
-    //background transparent
     left 0
     right 0
     top 0
@@ -428,7 +471,6 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     z-index 1000
     text-align center
     transition ease-in-out 1s opacity
-    //transition-property opacity
 
     &[style*="display: none"]
         display block !important
@@ -597,3 +639,272 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         width 24px
         height auto
 
+.ui-notification
+    @media(max-width $screen-sm)
+        right 0 !important
+        left 0 !important
+        margin auto !important
+        max-width 90%
+
+.no-list-message
+    display block
+    background rgba($blue-grey, 0.05)
+    padding $paddingBox
+    text-align left
+
+    &:before
+        content ''
+        display block
+
+    ul
+        padding-left $paddingBox*2
+
+        li
+            line-height 1.2em
+
+    .img_btncir
+        display inline-block
+
+.pagination
+    text-align left
+    padding 0 0 0 0px
+    width 100%
+    box-sizing border-box
+        //this helped to position menu list in title buttons
+.efor-cont-submenu
+    position fixed
+    right 40px
+    bottom 30px
+    size 60px
+    z-index 10
+
+    @media(max-width $screen-md)
+        right 20px
+
+    .mdl-button
+        background $corp1
+
+    .is-visible.mdl-menu__container + .mdl-tooltip.is-active
+        display none !important
+
+    #efor-add-signature
+        border-radius 1000px
+        size 60px
+        line-height @height
+        box-shadow rgba(0,0,0,0.25) 2px 2px 4px 0, rgba(0,0,0,0.5) 0px 0px 4px 0
+        z-index 100
+        opacity 1
+        padding 0
+        min-width 0
+
+    #efor-add-signature:hover ~ .efor-menu
+    .efor-menu:hover
+        opacity 1
+        bottom 100%
+
+        a
+            animation showMenuButtons ease-in-out 500ms
+
+    .efor-menu
+        opacity 0
+        background rgba(red ,0)
+        transition ease-in-out all 250ms
+        position absolute
+        left 0
+        right 0
+        bottom 0%
+        display block
+        height 100px
+        position absolute
+        text-align center
+        margin auto
+        padding-bottom 20px
+
+        a 
+            size 40px
+            overflow hidden
+            cursor pointer
+            line-height @height
+            display block
+            border none
+            margin 12px auto
+            min-height 0
+            min-width 0
+            max-height none
+            max-width none
+            padding 1px
+            color #fff
+            border-radius 100%
+            box-shadow $box-shadow3
+            background $textColor
+
+
+    .label
+        opacity .5
+
+    a
+        border-radius $rad
+        color $textColor
+
+        .dot
+            display none
+            font-size 14px
+            margin-top -2px
+            margin-right 4px
+
+// list licenses 
+.licenses-list
+    font-size $text_ps
+    line-height 1.2em
+    padding 0 0 0 5px
+    margin 0
+
+    li
+        display block
+        margin-bottom 15px
+        color $textColor
+
+.license-expiration
+    padding 10px
+    margin 15px
+    line-height 1.2em
+    border-radius 2px
+    color $blue-grey-300
+
+    &.warning
+        color $warning
+
+    b, i
+        display inline-block
+        
+// HEADER LOGO
+.efor-layout-title.mdl-layout-title
+    margin-right $paddingBox *3
+    max-width 210px
+    width 100%
+
+    .is-small-screen &
+        margin-right 0
+        display none
+
+.efor-logo_min
+    height 28px
+    vertical-align text-top
+
+// user logo in movil
+.efor-logo_client
+    margin-top ($paddingBox * -1.5)
+    padding $paddingBox
+    background #fff
+    text-align left
+    color $blue-grey-700
+
+    @media max-width $screen-sm
+        margin-left 0
+
+    .efor-domain-text
+        font-weight bold
+
+    .efor-user-text //img and icon
+        font-size $text_ps
+        overflow hidden
+        text-overflow ellipsis
+        display block
+        white-space nowrap
+
+    img.logo
+        max-width 100%
+        height auto
+        vertical-align middle
+        display block
+        margin auto
+        
+.efor-customer
+    size 24px
+    margin-right .25em !important
+    vertical-align middle
+    font-size 24px
+    border-radius 50%
+    vertical-align middle
+
+    &.mdi
+        margin-left -4px
+
+//details in modal
+.ul-details
+    ulUnformat block
+    &
+        width auto
+        max-width 100%
+        flex-grow 1
+        margin 20px
+        box-sizing border-box
+
+    li
+        background rgba($blue-grey-50, 0.75)
+        padding 6px 10px
+        color $textColor
+        line-height 1.2em
+
+        i
+        b
+            display inline-block
+
+        .material-icons
+            font-size 18px
+            display inline-block
+
+        span
+            display inline-block
+            padding-left 0.25em
+
+        &.status_1 span
+        &.status_4 span
+            color $info
+
+        &.status_2 span
+            color #000
+            font-weight bold
+
+        &.status_5 span
+            color $success
+
+        &.status_3 span
+        &.status_6 span
+            color $red
+
+        button
+            height 18px
+
+        ul
+            background rgba(236,239,241,0.76);
+            button
+                float right
+                border-radius 20%
+
+            li p
+                line-height 1.4em
+                color darken($red, 30)
+
+    li:nth-child(odd)
+        background rgba($blue-grey-50, 0.2)
+
+    .error-report
+        display block
+        overflow auto
+        padding 0
+        margin-bottom 3px
+
+        .details
+            maring-top 10px !important
+
+            > li
+                padding-top 4px
+                padding-bottom 0
+
+        .preScroll
+            display block
+            overflow auto
+            overflow-y hidden
+            max-width 100%
+            white-space pre

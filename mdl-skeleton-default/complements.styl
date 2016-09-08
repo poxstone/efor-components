@@ -923,3 +923,29 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             overflow-y hidden
             max-width 100%
             white-space pre
+            
+//Mesage whe tehe lis is empty
+.non-proccess
+    display block
+    background rgba($blue-grey, 0.05)
+    padding $paddingBox
+    text-align left
+    width 100%
+    animation showNonProcessText 2s ease-in
+    
+    &:before
+        content ''
+        display block
+    
+    ul
+        padding-left $paddingBox*2
+        
+        li
+            line-height 1.2em
+            
+    // Show hide button example for add sgignature
+    .img_btnsqu
+        display inline-block
+    
+    .img_btncir
+        display none

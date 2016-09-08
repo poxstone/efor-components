@@ -9,7 +9,7 @@
             restrict: 'A',
             link: function(scope, element, attrs) {
                 // Extract attributes
-                var attrPlaceholder = attrs.inpPlaceholder ? 'placeholder="' + attrs.inpPlaceholder + '"' : '';
+                var attrPlaceholder = attrs.inpPlaceholder ? 'placeholder="' + (searchStringInLanguageKeys(attrs.inpPlaceholder) || attrs.inpPlaceholder )+ '"' : '';
                 var attrQueryModel = attrs.inpQueryModel ? 'ng-model="' + attrs.inpQueryModel + '"' : '';
                 var attrReadOnly = attrs.readonly ? 'readonly' : '';
                 var inpKeyFun = attrs.inpKeyFun ? execute_Fun(attrs.inpKeyFun) : null;
@@ -302,6 +302,41 @@
 
                     return returnFunction;
 
+                }
+
+                // for change translate language
+                function searchStringInLanguageKeys(attr, index) {
+                    if (window.language_content && attr) {
+                        var iter = index || 0;
+                        var langAvalibles = Object.keys(window.language_content); 
+                        var lang = window.language_content[langAvalibles[iter]];
+                        var keys = Object.keys(lang);
+                        var newAttr;
+
+                        console.log('-------------------------------------------------------', inpEnterFun, attr);
+
+                        for ( var i = 0; i < keys.length; i++ ) {
+                            console.log(keys[i], ' -- ', lang[keys[i]] );
+                            if ( lang[keys[i]] == attr ) {
+                                newAttr = "{[{ '" + keys[i] + "' | translate }]}";
+                                break;
+                            }
+                        }
+
+                        // return finder or 
+                        if (newAttr) {
+                            console.log(newAttr);
+                            return newAttr;
+                        } else {
+                            iter++;
+                            if ((iter) < langAvalibles.length) {
+                                searchStringInLanguageKeys(attr, iter);
+                            } else {
+                                return attr;
+                            }
+                        }
+
+                    }
                 }
 
                 // Return item and array for result

@@ -714,9 +714,10 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
     #efor-add-signature:hover ~ .efor-menu
     .efor-menu:hover
         opacity 1
-        bottom 115px
+        bottom 100%
 
         a
+            opacity 1
             animation showMenuButtons ease-in-out 500ms
 
     .efor-menu
@@ -726,15 +727,16 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
         position absolute
         left 0
         right 0
-        bottom 0%
+        bottom -75%
         display block
-        height 50px
+        height auto
         position absolute
         text-align center
         margin auto
-        padding-bottom 20px
 
         a 
+            transition ease-in-out all 250ms
+            opacity 0
             size 40px
             overflow hidden
             cursor pointer
@@ -751,7 +753,6 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             border-radius 100%
             box-shadow $box-shadow3
             background $textColor
-
 
     .label
         opacity .5

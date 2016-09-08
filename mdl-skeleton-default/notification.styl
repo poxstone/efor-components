@@ -60,20 +60,24 @@ $noti_success = $noti_success is defined ? $noti_success :  #8bc34a
 
     &.warning
         &
+        .message
             color $noti_warning
 
     &.error
         &
+        .message
             color $noti_danger
 
     &.success
         &
+        .message
             color $noti_success
 
     &.info
         &
+        .message
             color $noti_info
-
+    
     &:hover
         background $noti_background_hover
         opacity 1

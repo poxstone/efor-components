@@ -313,19 +313,16 @@
                         var keys = Object.keys(lang);
                         var newAttr;
 
-                        console.log('-------------------------------------------------------', inpEnterFun, attr);
-
+                        // search in all keys of translate dict
                         for ( var i = 0; i < keys.length; i++ ) {
-                            console.log(keys[i], ' -- ', lang[keys[i]] );
                             if ( lang[keys[i]] == attr ) {
                                 newAttr = "{[{ '" + keys[i] + "' | translate }]}";
                                 break;
                             }
                         }
 
-                        // return finder or 
+                        // return finder or self value
                         if (newAttr) {
-                            console.log(newAttr);
                             return newAttr;
                         } else {
                             iter++;

@@ -71,6 +71,7 @@ $textGray = $textGray is defined ? $textGray : #666666
             scrollbar($grey-100, true, 5px, false)
 
         .config-box
+            margin auto
             margin-top 3%
             margin-bottom 0%
 
@@ -288,6 +289,8 @@ $textGray = $textGray is defined ? $textGray : #666666
         opacity 1
         left 0
         right 0
+        margin auto
+        width 100%
         transform translateX(0)
 
         @media(max-width $screen-md)
@@ -317,6 +320,7 @@ $textGray = $textGray is defined ? $textGray : #666666
             max-width 400px
             margin auto
             padding 0
+            
         &.width-lg
             max-width 600px !important
             margin auto
@@ -463,6 +467,7 @@ $textGray = $textGray is defined ? $textGray : #666666
     background #fff
     left 0
     right 0
+    width 100%
     max-width 420px
     max-height 250px
     margin 7% auto auto
@@ -524,6 +529,7 @@ $textGray = $textGray is defined ? $textGray : #666666
         margin auto
         overflow auto
         overflow-x hidden
+        height 100% //ie
         display flex
         flex-grow 1
         width 100%
@@ -558,16 +564,17 @@ $textGray = $textGray is defined ? $textGray : #666666
                 margin-right 0
 
 .config-box
-    background #fff
-    top 0
-    bottom 0
     left 0
     right 0
+    top 0
+    width 100%
+    bottom 10px
+    margin auto
     max-width 600px
     max-height 550px
     min-height 220px 
+    background #fff
     color $grey-900
-    position relative
     box-shadow 0 4px 8px rgba(0,0,0,.32),0 8px 40px rgba(0,0,0,.4)
     position absolute
 
@@ -621,6 +628,7 @@ $textGray = $textGray is defined ? $textGray : #666666
         display flex
         flex-grow 1
         width 100%
+        height 100% //ie
         margin-bottom 60px
         max-height calc(100% - 135px)
 
@@ -834,6 +842,7 @@ $textGray = $textGray is defined ? $textGray : #666666
         overflow auto
         overflow-x hidden
         max-height 400px
+        height 100% //ie
         margin-left -$paddingBox
         margin-right -$paddingBox
 

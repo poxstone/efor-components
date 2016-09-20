@@ -7,8 +7,14 @@ $blue-grey-50 = $blue-grey-50 is defined ? $blue-grey-50 : rgba(96,125,139,0.5)
 $paddingBox = $paddingBox is defined ? $paddingBox : 10px
 /*MODS*/
 // fixed vertical position icons in line txt
+.mdi
+    font-size 24px
+    line-height 1em
+    display inline-block
+
 .mdl-menu
 .mdl-navigation__link
+    .mdi
     .material-icons
         vertical-align middle
 
@@ -16,6 +22,7 @@ $paddingBox = $paddingBox is defined ? $paddingBox : 10px
     text-transform none
 
 .material-icons
+.mdi
     vertical-align middle
 
 // Fix blur on tooltip
@@ -197,6 +204,7 @@ input.mdl-textfield__input[type="file"]
         
     .mdl-button--icon
         .material-icons
+        .mdi
             margin-right .25em 
             
     &.efor-menu__small
@@ -868,6 +876,7 @@ mdlButton-disabled($bg=gray, $col=#fff, $col2=gray , args...)
             display inline-block
 
         .material-icons
+        .mdi
             font-size 18px
             display inline-block
 

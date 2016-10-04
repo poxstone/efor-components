@@ -421,7 +421,7 @@ $textGray = $textGray is defined ? $textGray : #666666
         left 0
         top 24px
         background $gray
-        border 2px solid #fff
+        border 2px solid transparent
         z-index -1
 
         &:after
@@ -544,6 +544,7 @@ $textGray = $textGray is defined ? $textGray : #666666
         flex-grow 1
         width 100%
         max-height calc(100% - 135px)
+        scrollbar($grey-100, true, 4px, false)
 
         > .mdl-grid
             height auto
@@ -560,6 +561,10 @@ $textGray = $textGray is defined ? $textGray : #666666
     
     .efor-modal-btn-quit
         color gray
+
+    .info-body
+        scrollbar($grey-100, true, 4px, false)
+        min-height 230px // for select html options nod hidden
 
     &.box-mini
         max-width 400px
@@ -961,7 +966,7 @@ $textGray = $textGray is defined ? $textGray : #666666
             margin 5px
             width calc( 33% - 10px )
             vertical-align top
-            border 10px solid #fff
+            border 10px solid transparent // transparent before was #fff
             box-sizing border-box
             transition ease-in-out 250ms all
 
@@ -999,10 +1004,7 @@ $textGray = $textGray is defined ? $textGray : #666666
                 margin-top 5px
 
             .mdl-checkbox__label
-                display block
-                font-size $text_ps
-                top -22px
-                left 22px
+                font-size $text_p
 
         .cont-radios
             //padding 6px 0 // disable because in white-box fail

@@ -1,5 +1,17 @@
-(function(){
+(function() {
     "use strict";
+    function ieVersionAddClass() {
+        // IE version MSIE100 MSIE90
+        var oldIEReg = new RegExp("MSIE ([0-9]+)\.[0-5]+")
+        var ieVersion = navigator.userAgent.match(oldIEReg);
+        ieVersion =  ieVersion ? ieVersion[0].replace(/[\.\/\s]+/g, '') : '';
+        var htm = document.getElementsByTagName('html')[0];
+        htm.className = htm.className + '' + ieVersion;
+        // alert validation
+        if (ieVersion.match(/[5678]0$/)) {
+            alert('Your browser is not compatible, please use Google Chrome');
+        }
+    }; ieVersionAddClass();
 
     if (location.href.match(/localhost|appspot/)){
 
@@ -82,8 +94,6 @@
                 },
                 1000);
         };resizeNgInstector();
-
-
     }
 
 })();

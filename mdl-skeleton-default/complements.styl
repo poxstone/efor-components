@@ -138,6 +138,13 @@ input.ng-invalid.ng-touched
         top 4px
         visibility visible
 
+    /.always-view .mdl-textfield__input
+        transition ease-in-out 250ms all
+        &:focus
+            outline none !important
+            box-shadow rgba(#B3E5FC, 0.5) 0 0 3px 0, rgba(#B3E5FC, 0.2) 0 0 6px 0 inset
+
+
 input.mdl-textfield__input[type="file"]
     font-size 12px
 

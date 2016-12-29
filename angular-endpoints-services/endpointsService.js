@@ -128,17 +128,23 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
 
         gapi.client.load(api, version, function() {
             var apiUrl = '';
+            // Update for ng-1.6
+            $http({
+                method: 'GET',
+                    url: apiRoot + '/discovery/v1/apis/' + api + '/' + version + '/rest'
+            })
+            .then(
+                function(data) {
+                    for (method in data.methods) {
+                        service[method] = builder(api, method);
+                        $log.info("Method " + method + " created");
 
-            $http.get(apiRoot + '/discovery/v1/apis/' + api + '/' + version + '/rest').success(function(data) {
-                for (method in data.methods) {
-                    service[method] = builder(api, method);
-                    $log.info("Method " + method + " created");
-
-                }
-                service.loaded_apis += 1;
-                callback();
-
-            });
+                    }
+                    service.loaded_apis += 1;
+                    callback();
+                },
+                function() {}
+            );
 
             $rootScope.$$phase || $rootScope.$apply();
 

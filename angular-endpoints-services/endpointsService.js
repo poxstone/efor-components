@@ -134,7 +134,9 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
                     url: apiRoot + '/discovery/v1/apis/' + api + '/' + version + '/rest'
             })
             .then(
-                function(data) {
+                function(response) {
+                    var data = response.data;
+
                     for (method in data.methods) {
                         service[method] = builder(api, method);
                         $log.info("Method " + method + " created");
@@ -143,7 +145,9 @@ window.EndpointsService = function($log, $q, $rootScope, $http, $window
                     service.loaded_apis += 1;
                     callback();
                 },
-                function() {}
+                function() {
+                    console.log(data);
+                }
             );
 
             $rootScope.$$phase || $rootScope.$apply();

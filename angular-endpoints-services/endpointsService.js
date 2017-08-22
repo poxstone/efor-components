@@ -141,7 +141,9 @@
 
 						for (var method in data.methods) {
 							service[method] = builder(api, method);
-							$log.info("Method " + method + " created");
+              if ( location.host.match(/localhost/) ) {
+                $log.info("Method " + method + " created");
+              }
 
 						}
 						service.loaded_apis += 1;

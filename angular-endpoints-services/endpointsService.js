@@ -121,7 +121,11 @@
 			if (apiRoot.indexOf("localhost") >= 0 || apiRoot.indexOf("127.0.0.1") >= 0) {
 				apiRoot = "http://" + apiRoot;
 			} else {
-				apiRoot = "https://" + apiRoot;
+        if ( !(window.api_host && window.api_host.match(/appspot.com/i)) && window.API_ROOT ) {
+          apiRoot = window.API_ROOT; /*In constants.js*/
+        } else {
+          apiRoot = "https://" + apiRoot;
+        }
 			}
 
 			gapi.client.load(api, version, function() {

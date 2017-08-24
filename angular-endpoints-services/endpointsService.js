@@ -81,7 +81,12 @@
 		}
 
 		service.authorize = function(client_id, scopes, auth_callback) {
-			// Store function in queue
+      if (gapi.auth.getToken() === null || gapi.auth.getToken() === undefined ) {
+        $rootScope.not_authorized = true;
+      } else {
+        $rootScope.not_authorized = false;
+      }
+      // Store function in queue
 			queueFun.push(auth_callback);
 			// send google auth
 			gapi.auth.authorize(
@@ -101,6 +106,7 @@
 						);
 				} else{
 					// run all functions queue
+          $rootScope.not_authorized = false;
 					return runQueueFun(authResult);
 
 				}
@@ -173,7 +179,6 @@
 		};
 
 		if ($window.google_client_loaded && !$window.loading_apis) {
-			console.log('Api client loaded first, loading apis...');
 			for (var i in $window.apis) {
 				var api = $window.apis[i];
 				$window.api_load(api.name, api.version);

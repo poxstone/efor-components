@@ -69,6 +69,7 @@
 
 		// This function run all stored functions
 		function runQueueFun(response) {
+      service.isLoged(); // upate button login status
 			for (var i=0; i < queueFun.length; i++) {
 				var funBack = queueFun[i];
 				if ( typeof(funBack) == 'function' ) {
@@ -113,11 +114,25 @@
       var mode = mode == undefined ? true : mode; 
       // Store function in queue
 			queueFun.push(auth_callback);
-			// send google auth
-			gapi.auth.authorize(
-				{client_id: client_id, scope: scopes, immediate: mode},
-				service.auth_callback_builder(client_id, scopes)
-			);
+
+      // calcule token expiration
+      var today= new Date();
+      today = parseInt(today.getTime() / 1000);
+      var tokenDate = parseInt( gapi.auth.getToken() && gapi.auth.getToken().expires_at || 0 );
+      
+			// validate token and expiration token date
+      if( tokenDate && ( tokenDate - today ) > 120 ) {
+          // send callback wiothout authenticate
+          if (location.host.match(/localhost/)){
+           console.log('expiration token in:', ( tokenDate - today )/60)
+          }
+          auth_callback();
+      } else {
+          gapi.auth.authorize(
+            {client_id: client_id, scope: scopes, immediate: mode},
+            service.auth_callback_builder(client_id, scopes)
+          );
+      }
 		}
 
 		service.auth_callback_builder = function(client_id, scopes) {
@@ -200,7 +215,6 @@
       $window.apisToLoad = $window.apisToLoad >= 0 ? $window.apisToLoad : $window.apis.length || 0;
       var callbackInint = function() {
         if (--$window.apisToLoad == 0) {
-
           gapi.client.load('oauth2', 'v2', function() { });
         }
       }

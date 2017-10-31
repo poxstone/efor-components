@@ -80,6 +80,15 @@
 			queueFun = [];
 		}
 
+    service.userInfo = function($scope) {
+      gapi.client.oauth2.userinfo.get().execute(function(res){
+          $rootScope.user = res;
+          $scope.$apply();
+          return res;
+        }
+      );
+    };
+
     service.isLoged = function() {
       var buttons = document.querySelectorAll("[ng-click^='login(']");
       if (gapi.auth.getToken() === null || gapi.auth.getToken() === undefined ) {

@@ -197,8 +197,8 @@
 						service.loaded_apis += 1;
 						callback();
 					},
-					function() {
-						console.log(data);
+					function(response) {
+						console.log(response);
 					}
 				);
 

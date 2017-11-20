@@ -115,14 +115,25 @@ input
                     content "\25B2"
 
             &.is-closed ~ .content-links
-                height 0
-                opacity 0
                 padding-bottom 0
+                
+                .mdl-navigation__link
+                    height 0
+                    opacity 0
+                    padding-top 0
+                    padding-bottom 0
+                    line-height 0
+                    overflow hidden
 
         &, .content-links
             display block
             padding 0
             margin 0
+
+            .mdl-navigation__link
+                line-height 1.2em
+                transition ease-in-out 300ms all
+
         &
             padding-bottom 20px
 
